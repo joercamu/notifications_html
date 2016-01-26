@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div>
+        <input id="stateNotifications">
+        <button onclick="validateNotification()">validate notifications</button>
+        <button onclick="enableNotifications()">Enable notifications</button>
+        <button onclick="showNotification()">Show notification</button>
+    </div>
+    <script>
+        function validateNotification(){
+            document.getElementById('stateNotifications').value= (Notification.permission);
+        }
+        function enableNotifications(){
+            if (Notification){
+                Notification.requestPermission();
+            }
+        }
+    
+        function showNotification(){
+            var title = "SuprapakApps"
+            var extra = {
+            icon: "http://suprapak.com/wordpress/wp-content/uploads/2015/06/suprapak-estandar.png",
+            body: "Primer notificacion de suprapakapps"
+            }
+            // Lanzamos la notificación
+            new Notification( title, extra)
+        }
+        document.addEventListener('DOMContentLoaded',function(){
+           setTimeout(function(){
+               var title = "No estabas"
+                var extra = {
+                icon: "http://suprapak.com/wordpress/wp-content/uploads/2015/06/suprapak-estandar.png",
+                body: "Primer notificacion de suprapakapps"
+                }
+                // Lanzamos la notificación
+                new Notification( title, extra)
+           },5000);
+        });
+    </script>
+</body>
+</html>
